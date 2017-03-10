@@ -14,7 +14,6 @@
 import configparser
 import json
 import requests
-from urllib import urlencode
 import sys
 import time
 

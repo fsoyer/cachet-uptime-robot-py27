@@ -5,6 +5,12 @@ Cachet is an open source status page system, this repository is a Python script 
 This script was initially cloned from https://github.com/Axiacore/cachet-uptime-robot. Axiacore does the job for Python3, be thanks for that.
 Fgth has downgraded it here for Python27.
 
+**Prerequisite
+pip install configparser
+pip install json
+pip install requests
+
+
 **Component status: Uptime Robot (left), Cachet (right)**
 
 * Not checked yet: Operational
