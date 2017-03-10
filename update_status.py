@@ -5,7 +5,7 @@
 # - Migrated Uptime Robot API key in config.ini
 # - Added "Debug" to display informational messages while configuring
 # - Changed the field "custom_uptime_ratio" read from Uptime Robot to update metric on Cachet,
-    for last value of "response_times", more demonstrative IMHO.
+#   for last value of "response_times", more demonstrative IMHO.
 # - You can uncomment "verify=False" if your Cachet site as an SSL self-signed certificate (for testing time!)
 #   For production, no more reason to not use a Let's Encrypt cert !!
 # - Added some informational messages here and there for debug mode. Can be extended.
