@@ -65,4 +65,16 @@ python27 update_status.py config.ini
 >>> Updating monitor MySite. URL: http://mysite.co. ID: 12345678
 >>> Metric created: {'data': {'calculated_value': 99.99, 'counter': 1, 'metric_id': 4, 'value': 99.99, 'created_at': '2016-08-12 08:23:10', 'updated_at': '2016-08-12 08:23:10', 'id': 99}}
 ```
-
+### Troubleshooting
+You can check your access to Cachet and Uptime Robot manually with curl, to validate your configuration.
+Connect to Cachet and list metric information :
+```bash
+# List information for metric id=2
+curl -X GET -H "Content-Type: application/json" -H "X-Cachet-Token: <your-api-key>" https://status.mycompany.com/api/v1/metrics/2
+# List points from metric id=2
+curl -X GET -H "Content-Type: application/json" -H "X-Cachet-Token: <your-api-key>" https://status.mycompany.com/api/v1/metrics/2/points
+```
+Connect to Uptime Robot and list a monitor with its response_times :
+```bash
+curl -X POST -H "Content-Type: application/x-www-form-urlencoded" -H "cache-control: no-cache" --url "https://api.uptimerobot.com/v2/getMonitors" --data-urlencode "api_key=<your-monitor-api-key>" --data-urlencode "format=json" --data-urlencode "response_times=1"  --data-urlencode "uptime_ratio=30"
+```
