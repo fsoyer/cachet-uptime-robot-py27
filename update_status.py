@@ -225,7 +225,7 @@ class Monitor(object):
         """
         uptime_robot = UptimeRobot(self.api_key,self.base_url)
         success, response = uptime_robot.get_monitors()
-        if success and debug:
+        if success:
             monitors = response.get('monitors')
             for monitor in monitors:
                 if monitor['url'] in self.monitor_list:
@@ -237,9 +237,8 @@ class Monitor(object):
                             monitor['status'],
                         ))
                     self.send_data_to_catchet(monitor)
-        if not success:
+        else:
             print('ERROR: No data was returned from UptimeMonitor')
-
 
 if __name__ == "__main__":
     CONFIG = configparser.ConfigParser()
