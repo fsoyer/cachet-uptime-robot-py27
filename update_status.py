@@ -10,7 +10,6 @@
 #   For production, no more reason to not use a Let's Encrypt cert !!
 # - Added some informational messages here and there for debug mode. Can be extended.
 
-
 import configparser
 import json
 import requests

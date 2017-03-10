@@ -24,7 +24,7 @@ To get started, you have to specify your Cachet and UptimeRobot settings and in 
 ```ini
 [uptimeRobot]
 UptimeRobotMainApiKey = your-api-key
-UptimeRobotUrl = UptimeRobot-api-url (formely : https://api.uptimerobot.com/v2/getMonitors)
+UptimeRobotUrl = UptimeRobot-api-url (at this time : https://api.uptimerobot.com/v2/getMonitors)
 
 [https://url.in.uptime.robot.com]
 CachetApiKey = cachet-api-key
