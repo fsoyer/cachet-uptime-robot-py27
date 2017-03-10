@@ -25,7 +25,7 @@ class UptimeRobot(object):
         self.api_key = api_key
         self.base_url = base_url
 
-    def get_monitors(self, response_times=0, logs=0, uptime_ratio=30):
+    def get_monitors(self, response_times=1, logs=0, uptime_ratio=30):
         """
         Returns status and response payload for all known monitors.
         """
@@ -52,8 +52,7 @@ class UptimeRobot(object):
             headers={'content-type': "application/x-www-form-urlencoded",'cache-control': "no-cache"},
         )
 
-        print 'CODE ',r.status_code
-        if not r.status_code==200 and debug:
+        if not r.status_code==200:
             print('ERROR ',r.status_code,': No data was returned from UptimeMonitor')
 
         # Verifying in the response is jsonp in otherwise is error
@@ -219,7 +218,7 @@ class Monitor(object):
         """ Update all monitors uptime and status.
         """
         uptime_robot = UptimeRobot(self.api_key,self.base_url)
-        success, response = uptime_robot.get_monitors(response_times=1)
+        success, response = uptime_robot.get_monitors()
         if success and debug:
             monitors = response.get('monitors')
             for monitor in monitors:

@@ -20,7 +20,7 @@ Fgth has downgraded it here for Python27.
 
 ### Getting started 
 
-To get started, you have to specify your Cachet and UptimeRobot settings and in **config.ini**.
+To get started, you have to specify your Cachet and UptimeRobot settings in **config.ini**.
 ```ini
 [uptimeRobot]
 UptimeRobotMainApiKey = your-api-key
