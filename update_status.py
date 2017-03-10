@@ -5,7 +5,7 @@
 # - Migrated Uptime Robot API key in config.ini
 # - Added "Debug" to display informational messages while configuring
 # - Changed the field "custom_uptime_ratio" read from Uptime Robot to update metric on Cachet,
-#   for last value of "response_times", more demonstrative IMHO.
+#   for last value of "response_times", more demonstrative IMHO. This can be reverted by setting response_times=0.
 # - You can uncomment "verify=False" if your Cachet site as an SSL self-signed certificate (for testing time!)
 #   For production, no more reason to not use a Let's Encrypt cert !!
 # - Added some informational messages here and there for debug mode. Can be extended.
@@ -16,6 +16,7 @@ import requests
 import sys
 import time
 
+response_times = 1
 debug = False
 
 class UptimeRobot(object):
@@ -25,7 +26,7 @@ class UptimeRobot(object):
         self.api_key = api_key
         self.base_url = base_url
 
-    def get_monitors(self, response_times=1, logs=0, uptime_ratio=30):
+    def get_monitors(self, response_times=response_times, logs=0, uptime_ratio=30):
         """
         Returns status and response payload for all known monitors.
         """
@@ -204,9 +205,14 @@ class Monitor(object):
                 int(monitor.get('status'))
             )
 
-        list_resp=monitor.get('response_times')
+        if response_times == 1:
+            list_resp=monitor.get('response_times')
+            metric_value=list_resp[0]['value']
+        else:
+            metric_value=monitor.get('custom_uptime_ratio')
+
         metric = cachet.set_data_metrics(
-            list_resp[0]['value'],
+            metric_value,
             monitor.get('status'),
             int(time.time()),
             website_config['metric_id']
