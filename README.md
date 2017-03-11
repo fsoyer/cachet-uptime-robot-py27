@@ -21,6 +21,8 @@ Fgth has downgraded it here for Python27.
 ### Getting started 
 
 To get started, you have to specify your Cachet and UptimeRobot settings in **config.ini**.
+
+Rename config.ini.sample to config.ini, then:
 ```ini
 [uptimeRobot]
 UptimeRobotMainApiKey = your-api-key
